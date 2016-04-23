@@ -16,5 +16,6 @@ Step6: Adding images to the project
 Step7: Attach angular to the input (ng-model)
 Step8: checking correct solution (ng-show/ng-if, calling functions)
 Step9: checking only on input change, showing toast when solution is correct
-Step10: Observing model change instead of input change ($scope, $scope.watch
-Step11: timeForThe solution
+Step10: Observing model change instead of input change ($scope, $scope.watch)
+Step11: Time the solution
+Step12: Refactor

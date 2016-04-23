@@ -1,44 +1,31 @@
 export class MainController {
   constructor ($scope, $timeout, webDevTec, toastr) {
     'ngInject';
+    this.toastr = toastr
+    this.startLevel()
 
-    this.guess = ''
-    this.isCorrectSolution = false
-    this.startTime = Date.now()
-
-    $scope.$watch("main.guess", (newValue, oldValue)=>{
-      let elapsed = ((Date.now() - this.startTime)/ 1000).toFixed(1)
-      if (newValue == 'sabbia') {
-        this.isCorrectSolution = true
-        toastr.info("You passed level 1 in " + elapsed + "s")
-      }
+    $scope.$watch("main.guess", guess => {
+      if (guess == this.correctSolution)
+        this.passLevel()
     })
-
-    // this.awesomeThings = [];
-    // this.classAnimation = '';
-    // this.creationDate = 1461405922599;
-    // this.toastr = toastr;
-
-    // this.activate($timeout, webDevTec);
   }
 
-  // activate($timeout, webDevTec) {
-  //   this.getWebDevTec(webDevTec);
-  //   $timeout(() => {
-  //     this.classAnimation = 'rubberBand';
-  //   }, 4000);
-  // }
+  //Reset variables to start a new level
+  startLevel() {
+    this.guess = ''
+    this.isCorrectGuess = false
+    this.startTime = Date.now()
+    this.correctSolution = 'sabbia'
+  }
 
-  // getWebDevTec(webDevTec) {
-  //   this.awesomeThings = webDevTec.getTec();
+  //Set the variable for the end of one level (winning screen etc)
+  passLevel(){
+    const MS_IN_1_SECONDS = 1000
+    let elapsed = Date.now() - this.startTime
+    let toSeconds = ms => (ms/MS_IN_1_SECONDS).toFixed(1)
 
-  //   angular.forEach(this.awesomeThings, (awesomeThing) => {
-  //     awesomeThing.rank = Math.random();
-  //   });
-  // }
+    this.toastr.info("You passed level 1 in " + toSeconds(elapsed) + "s")
+    this.isCorrectGuess = true
+  }
 
-  // showToastr() {
-  //   this.toastr.info('Fork <a href="https://github.com/Swiip/generator-gulp-angular" target="_blank"><b>generator-gulp-angular</b></a>');
-  //   this.classAnimation = '';
-  // }
 }
