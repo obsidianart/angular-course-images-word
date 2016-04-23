@@ -41,6 +41,7 @@
         ng-repeat="letter in main.letters track by $index"
         ng-click="main.insertLetter(letter)"
         class="letterButton btn btn-raised btn-info"
+        ng-attr-data-letter="{{letter.used ? '':letter.char}}"
       >
         <span>
           {{letter.used ? '&nbsp;':letter.char}}

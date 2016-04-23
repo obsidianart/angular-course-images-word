@@ -21,7 +21,6 @@ describe('The main view', function () {
 
   describe('When inserting the right solution',function(){
     beforeEach(function () {
-      console.log("before inserting")
       page.insertSolution('sand')
     })
   

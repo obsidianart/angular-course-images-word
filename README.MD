@@ -28,3 +28,4 @@ Step17: Testing unit, show code coverage
 Step18: e2e tests
 Step19: Clean e2e
 Step20: Adding buttons for the solution (ng-repeat)
+Step21: Fix tests

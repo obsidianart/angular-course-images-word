@@ -11,12 +11,19 @@ var MainPage = function() {
   this.picture3 = element(by.css('#picture3'))
   this.picture4 = element(by.css('#picture4'))
 
+  this.getButtonByLetter = (letter) => element(by.buttonText('Save'));
+
   this.solutionInput = element(by.model('main.input.guess'))
   this.insertSolution = solution => {
-  	this.solutionInput.sendKeys(solution);
+    solution
+      .split('')
+      .forEach((letter) => {
+        var letterButton = element(by.css(`[data-letter="${letter}"]`))
+        letterButton.click()
+      })
   }
 
-  this.nextLevelButton = ()=>element(by.css('[ng-click="main.nextLevel()"]'))
+  this.nextLevelButton = ()=> element(by.css('[ng-click="main.nextLevel()"]'))
   // this.jumbEl = element(by.css('.jumbotron'));
   // this.h1El = this.jumbEl.element(by.css('h1'));
   // this.imgEl = this.jumbEl.element(by.css('img'));
