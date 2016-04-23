@@ -8,10 +8,10 @@
   <br>
   <div class="row">
     <div class="col-xs-6 text-center">
-      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level1/1.jpg">
+      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level{{main.currentLevel}}/1.jpg">
     </div>
     <div class="col-xs-6 text-center">
-      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level1/2.jpg">
+      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level{{main.currentLevel}}/2.jpg">
     </div>
   </div>
   <br>
@@ -19,10 +19,10 @@
   <br>
   <div class="row">
     <div class="col-xs-6 text-center">
-      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level1/3.jpg">
+      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level{{main.currentLevel}}/3.jpg">
     </div>
     <div class="col-xs-6 text-center">
-      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level1/4.jpg">
+      <img class="img-responsive" style="margin:0 auto" width="300" ng-src="assets/images/level{{main.currentLevel}}/4.jpg">
     </div>
   </div>
   <br>
@@ -30,7 +30,7 @@
   <br>
   <div class="row" ng-show="main.isCorrectGuess">
     <div class="col-xs-12 text-center">
-      <button class="bnt btn-primary btn-lg">Correct! Go to the next level</button>
+      <button class="bnt btn-primary btn-lg" ng-click="main.nextLevel()">Correct! Go to the next level</button>
     </div>
   </div>
   <div class="row" ng-show="!main.isCorrectGuess">

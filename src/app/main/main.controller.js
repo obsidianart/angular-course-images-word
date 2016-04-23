@@ -2,6 +2,7 @@ export class MainController {
   constructor ($scope, $timeout, webDevTec, toastr) {
     'ngInject';
     this.toastr = toastr
+    this.currentLevel = 1
     this.startLevel()
 
     $scope.$watch("main.guess", guess => {
@@ -15,7 +16,7 @@ export class MainController {
     this.guess = ''
     this.isCorrectGuess = false
     this.startTime = Date.now()
-    this.correctSolution = 'sabbia'
+    this.correctSolution = this.getCurrentLevel().correctSolution
   }
 
   //Set the variable for the end of one level (winning screen etc)
@@ -26,6 +27,37 @@ export class MainController {
 
     this.toastr.info("You passed level 1 in " + toSeconds(elapsed) + "s")
     this.isCorrectGuess = true
+  }
+
+  nextLevel() {
+    this.currentLevel++
+    if (this.getCurrentLevel()) {
+      this.startLevel()
+    } else {
+      this.endGame()
+    }
+  }
+
+  endGame() {
+    //Route to game ended page
+    console.log("Game finished")
+  }
+
+  getCurrentLevel() {
+    const levels = {
+      level1: {
+        correctSolution: 'sand'
+      },
+      level2: {
+        correctSolution: 'fire'
+      }
+    }
+    let newLevel = `level${this.currentLevel}`
+    if (newLevel in levels) {
+      return levels[newLevel]
+    } else {
+      return false
+    }
   }
 
 }
