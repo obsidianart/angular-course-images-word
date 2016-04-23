@@ -28,10 +28,22 @@
   <br>
   <br>
   <br>
-  <div class="row">
+  <div class="row" ng-show="main.isCorrectSolution()">
+    <div class="col-xs-12 text-center">
+      <button class="bnt btn-primary btn-lg">Correct! Go to the next level</button>
+    </div>
+  </div>
+  <div class="row" ng-show="!main.isCorrectSolution()">
     <form action="" autocomplete="off" class="col-xs-6 col-xs-offset-3">
       <label class="sr-only">Your guess</label>
-      <input class="form-control input-lg" type="text" placeholder="Your guess here">
+      <input
+        ng-model="main.guess"
+        class="form-control input-lg"
+        type="text"
+        placeholder="Your guess here"
+        maxlength="10"
+        required="required"
+      >
     </form>
   <div class="row">
 </div>
