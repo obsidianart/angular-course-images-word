@@ -1,7 +1,8 @@
 export class MainController {
-  constructor ($scope, $timeout, webDevTec, toastr) {
+  constructor ($scope, $timeout, $state, toastr) {
     'ngInject';
     this.toastr = toastr
+    this.$state = $state
     this.currentLevel = 1
     this.startLevel()
 
@@ -39,8 +40,7 @@ export class MainController {
   }
 
   endGame() {
-    //Route to game ended page
-    console.log("Game finished")
+    this.$state.go('gameEnded')
   }
 
   getCurrentLevel() {

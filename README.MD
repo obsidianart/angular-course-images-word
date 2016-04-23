@@ -1,3 +1,4 @@
+https://github.com/swiip/generator-gulp-angular#readme
 - `$ gulp` to build an optimized version of your application in folder dist
 - `$ gulp serve` to start BrowserSync server on your source files with live reload
 - `$ gulp serve:dist` to start BrowserSync server on your optimized application without live reload
@@ -20,3 +21,4 @@ Step10: Observing model change instead of input change ($scope, $scope.watch)
 Step11: Time the solution
 Step12: Refactor
 Step13: Adding level 2, Adding level concept, adding end game concept
+Step14: Adding game ended screen and route
