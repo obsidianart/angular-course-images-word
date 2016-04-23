@@ -26,3 +26,4 @@ Step15: clean up html and some css
 Step16: Material design
 Step17: Testing unit, show code coverage
 Step18: e2e tests
+Step19: Clean e2e
