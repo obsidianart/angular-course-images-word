@@ -19,3 +19,4 @@ Step9: checking only on input change, showing toast when solution is correct
 Step10: Observing model change instead of input change ($scope, $scope.watch)
 Step11: Time the solution
 Step12: Refactor
+Step13: Adding level 2, Adding level concept, adding end game concept
