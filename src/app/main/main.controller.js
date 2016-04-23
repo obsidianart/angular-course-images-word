@@ -1,17 +1,16 @@
 export class MainController {
-  constructor ($timeout, webDevTec, toastr) {
+  constructor ($scope, $timeout, webDevTec, toastr) {
     'ngInject';
 
     this.guess = ''
     this.isCorrectSolution = false
 
-
-    this.verifySolution = ()=> {
-      if (this.guess == 'sabbia') {
+    $scope.$watch("main.guess", (newValue, oldValue)=>{
+      if (newValue == 'sabbia') {
         this.isCorrectSolution = true
         toastr.info("You passed level 1")
       }
-    }
+    })
 
     // this.awesomeThings = [];
     // this.classAnimation = '';
