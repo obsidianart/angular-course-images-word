@@ -14,3 +14,5 @@ Step4: add 4 images and an input box
 Step5: get 4 non licenced pictures https://www.flickr.com/creativecommons/ and resize them
 Step6: Adding images to the project
 Step7: Attach angular to the input (ng-model)
+Step8: checking correct solution (ng-show/ng-if, calling functions)
+Step9: checking only on input change, showing toast when solution is correct

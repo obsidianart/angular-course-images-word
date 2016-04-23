@@ -3,8 +3,16 @@ export class MainController {
     'ngInject';
 
     this.guess = ''
-    this.isCorrectSolution = ()=> this.guess === 'sabbia'
-    
+    this.isCorrectSolution = false
+
+
+    this.verifySolution = ()=> {
+      if (this.guess == 'sabbia') {
+        this.isCorrectSolution = true
+        toastr.info("You passed level 1")
+      }
+    }
+
     // this.awesomeThings = [];
     // this.classAnimation = '';
     // this.creationDate = 1461405922599;
