@@ -24,4 +24,4 @@ Step13: Adding level 2, Adding level concept, adding end game concept
 Step14: Adding game ended screen and route
 Step15: clean up html and some css
 Step16: Material design
-Step17: Testing
+Step17: Testing unit, show code coverage

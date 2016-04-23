@@ -4,17 +4,33 @@ export class MainController {
     this.toastr = toastr
     this.$state = $state
     this.currentLevel = 1
+    this.input = {
+      guess: ''
+    }
     this.startLevel()
 
-    $scope.$watch("main.guess", guess => {
-      if (guess == this.correctSolution)
-        this.passLevel()
-    })
+    // $scope.$watch("main.input.guess", guess => {
+    //   console.log("CALLED", guess)
+    //   if (this.isCorrectSolution(guess))
+    //     this.passLevel()
+    // })
+
+    $scope.$watch(
+      () => this.input.guess,
+      guess => {
+        if (this.isCorrectSolution(guess))
+          this.passLevel()
+      }
+    )
+  }
+
+  isCorrectSolution(guess) {
+    return guess == this.correctSolution
   }
 
   //Reset variables to start a new level
   startLevel() {
-    this.guess = ''
+    this.input.guess = ''
     this.isCorrectGuess = false
     this.startTime = Date.now()
     this.correctSolution = this.getCurrentLevel().correctSolution
@@ -31,6 +47,8 @@ export class MainController {
   }
 
   nextLevel() {
+    if(!this.isCorrectSolution(this.input.guess)) return;
+    
     this.currentLevel++
     if (this.getCurrentLevel()) {
       this.startLevel()
