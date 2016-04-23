@@ -27,6 +27,23 @@ $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/"
   }
 }
 
+$vertical-rythm: 20px;
+
+main {
+	h1 {
+		padding-top: $vertical-rythm;
+		padding-bottom: $vertical-rythm;
+	}
+}
+
+#guessPictures {
+	.img-responsive {
+		margin-bottom:$vertical-rythm;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
 /**
  *  Do not remove the comments below. It's the markers used by gulp-inject to inject
  *  all your sass files automatically
