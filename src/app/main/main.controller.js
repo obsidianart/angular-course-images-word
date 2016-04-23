@@ -1,5 +1,5 @@
 export class MainController {
-  constructor ($scope, $timeout, $state, toastr) {
+  constructor ($scope, $state, toastr) {
     'ngInject';
     this.toastr = toastr
     this.$state = $state

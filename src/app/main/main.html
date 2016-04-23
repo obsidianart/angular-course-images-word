@@ -23,15 +23,17 @@
   </div>
   <div class="row" ng-show="!main.isCorrectGuess">
     <form action="" autocomplete="off" class="col-xs-6 col-xs-offset-3">
-      <label class="sr-only">Your guess</label>
-      <input
-        ng-model="main.guess"
-        class="form-control input-lg"
-        type="text"
-        placeholder="Your guess here"
-        maxlength="10"
-        required="required"
-      >
+      <div class="form-group label-static is-empty">
+        <label for="i1" class="control-label">Your guess</label>
+        <input 
+          ng-model="main.guess"
+          class="form-control input-lg"
+          type="text"
+          maxlength="10"
+          required="required"
+          id="i1"
+          placeholder="Type your guess here">
+      </div>
     </form>
   </div>
 </main>
