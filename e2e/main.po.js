@@ -6,10 +6,21 @@
 'use strict';
 
 var MainPage = function() {
-  this.jumbEl = element(by.css('.jumbotron'));
-  this.h1El = this.jumbEl.element(by.css('h1'));
-  this.imgEl = this.jumbEl.element(by.css('img'));
-  this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in main.awesomeThings'));
-};
+  this.picture1 = element(by.css('#picture1'))
+  this.picture2 = element(by.css('#picture2'))
+  this.picture3 = element(by.css('#picture3'))
+  this.picture4 = element(by.css('#picture4'))
 
-module.exports = new MainPage();
+  this.solutionInput = element(by.model('main.input.guess'))
+  this.insertSolution = solution => {
+  	this.solutionInput.sendKeys(solution);
+  }
+
+  this.nextLevelButton = ()=>element(by.css('[ng-click="main.nextLevel()"]'))
+  // this.jumbEl = element(by.css('.jumbotron'));
+  // this.h1El = this.jumbEl.element(by.css('h1'));
+  // this.imgEl = this.jumbEl.element(by.css('img'));
+  // this.thumbnailEls = element(by.css('body')).all(by.repeater('awesomeThing in main.awesomeThings'));
+}
+
+module.exports = new MainPage()
