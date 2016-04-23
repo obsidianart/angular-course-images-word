@@ -4,11 +4,13 @@ export class MainController {
 
     this.guess = ''
     this.isCorrectSolution = false
+    this.startTime = Date.now()
 
     $scope.$watch("main.guess", (newValue, oldValue)=>{
+      let elapsed = ((Date.now() - this.startTime)/ 1000).toFixed(1)
       if (newValue == 'sabbia') {
         this.isCorrectSolution = true
-        toastr.info("You passed level 1")
+        toastr.info("You passed level 1 in " + elapsed + "s")
       }
     })
 
