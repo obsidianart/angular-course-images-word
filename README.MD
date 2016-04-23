@@ -11,4 +11,5 @@ Step1: let's have a look around and understand the structure of the application
 Step2: let's run it
 Step3: let's comment the index and start building our own from the UX
 Step4: add 4 images and an input box
-Step5:
+Step5: get 4 non licenced pictures https://www.flickr.com/creativecommons/ and resize them
+Step6: Adding images to the project
