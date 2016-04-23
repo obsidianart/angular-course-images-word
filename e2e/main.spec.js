@@ -35,7 +35,7 @@ describe('The main view', function () {
         page.nextLevelButton().click()
       })
 
-      it('should show the next level button', function () {
+      it('should show the images for level 2', function () {
         checkImagesForLevel('level2')
       })
     })
