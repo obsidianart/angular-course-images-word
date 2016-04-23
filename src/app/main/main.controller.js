@@ -9,12 +9,6 @@ export class MainController {
     }
     this.startLevel()
 
-    // $scope.$watch("main.input.guess", guess => {
-    //   console.log("CALLED", guess)
-    //   if (this.isCorrectSolution(guess))
-    //     this.passLevel()
-    // })
-
     $scope.$watch(
       () => this.input.guess,
       guess => {
@@ -28,12 +22,37 @@ export class MainController {
     return guess == this.correctSolution
   }
 
+  insertLetter(letter) {
+    if (letter.used) return;
+    if (this.input.guess.length >= this.correctSolution.length) return;
+
+    letter.used = true
+    this.input.guess += letter.char
+  }
+
+  rigthPadSpacesGuess() {
+    let paddedGuess = this.input.guess
+    while(paddedGuess.length < this.correctSolution.length)
+      paddedGuess += '\u00A0'
+    return paddedGuess
+  }
+
   //Reset variables to start a new level
   startLevel() {
     this.input.guess = ''
     this.isCorrectGuess = false
     this.startTime = Date.now()
+    this.letters = this.getCurrentLevel()
+                       .letters
+                       .split('')
+                       .map(char => {
+                          return {char, used:false}
+                        })
     this.correctSolution = this.getCurrentLevel().correctSolution
+  }
+
+  restartLevel(){
+    return this.startLevel()
   }
 
   //Set the variable for the end of one level (winning screen etc)
@@ -64,10 +83,12 @@ export class MainController {
   getCurrentLevel() {
     const levels = {
       level1: {
-        correctSolution: 'sand'
+        correctSolution: 'sand',
+        letters: 'esdawrnrgdop'
       },
       level2: {
-        correctSolution: 'fire'
+        correctSolution: 'fire',
+        letters: 'nmqefdwrnrig'
       }
     }
     let newLevel = `level${this.currentLevel}`

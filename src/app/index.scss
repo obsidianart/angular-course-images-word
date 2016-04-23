@@ -4,6 +4,7 @@
  */
 $navbar-inverse-link-color: #5AADBB;
 $icon-font-path: "../../bower_components/bootstrap-sass/assets/fonts/bootstrap/";
+$border-radius-base: 0;
 
 /**
  *  Do not remove the comments below. It's the markers used by wiredep to inject
@@ -34,7 +35,14 @@ main {
 		padding-top: $vertical-rythm;
 		padding-bottom: $vertical-rythm;
 	}
+	padding-bottom: $vertical-rythm;
 }
+
+//////////////////////////////////////
+/***********GUESS PAGE***************/
+//////////////////////////////////////
+$letterWidth:2.53em;
+$lettersPerLine: 6;
 
 #guessPictures {
 	.img-responsive {
@@ -42,6 +50,18 @@ main {
 		margin-left: auto;
 		margin-right: auto;
 	}
+}
+
+.letterButton {
+	width: $letterWidth;
+}
+
+#guess-block {
+	margin-top: $vertical-rythm;
+	margin-left:auto;
+	margin-right:auto;
+
+	width: ($letterWidth * $lettersPerLine + 1);
 }
 
 /**

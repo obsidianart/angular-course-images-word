@@ -1,6 +1,6 @@
 <main class="container">
   <div class="row">
-    <h1 class="text-center">4 pictures 1 word</h1>
+    <h1 class="text-center">4 PICTURES 1 WORD</h1>
   </div>
   <section id="guessPictures" class="row">
     <div class="col-xs-6 text-center">
@@ -21,19 +21,31 @@
       <button class="bnt btn-primary btn-lg" ng-click="main.nextLevel()">Correct! Go to the next level</button>
     </div>
   </div>
-  <div class="row" ng-show="!main.isCorrectGuess">
-    <form action="" autocomplete="off" class="col-xs-6 col-xs-offset-3">
-      <div class="form-group label-static is-empty">
-        <label for="i1" class="control-label">Your guess</label>
-        <input 
-          ng-model="main.input.guess"
-          class="form-control input-lg"
-          type="text"
-          maxlength="10"
-          required="required"
-          id="i1"
-          placeholder="Type your guess here">
-      </div>
-    </form>
-  </div>
+  <section ng-show="!main.isCorrectGuess">
+    <div class="row text-center">
+      <span
+        ng-repeat="letter in main.rigthPadSpacesGuess(main.input.guess) track by $index"
+        class="letterButton btn btn-default"
+      >
+        {{letter}}
+      </span>
+      <span
+        ng-click="main.restartLevel()"
+        class="letterButton btn btn-raised btn-default">
+        <span class="glyphicon glyphicon-repeat"></span>
+      </span>
+    </div>
+
+    <div id="guess-block" class="text-center" ng-show="!main.isCorrectGuess">
+      <span
+        ng-repeat="letter in main.letters track by $index"
+        ng-click="main.insertLetter(letter)"
+        class="letterButton btn btn-raised btn-info"
+      >
+        <span>
+          {{letter.used ? '&nbsp;':letter.char}}
+        </span>
+      </span>
+    </div>
+  </section>
 </main>
