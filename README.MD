@@ -1,5 +1,7 @@
 This project has been made for a basic angular course.
 
+To see this code running (except the node backend) http://www.obsidianart.com/projects/4pictures1word/#/
+
 To play the original game (made by LOTUM) go to https://play.google.com/store/apps/details?id=de.lotum.whatsinthefoto.us
 
 Each step represent a step in the explanation of how to work with angular.
