@@ -1,5 +1,5 @@
 export class MainController {
-  constructor ($scope, $state, $http, GameLevels, toastr) {
+  constructor ($scope, $state, $http, $stateParams, GameLevels, toastr) {
     'ngInject';
     this.toastr = toastr
     this.$state = $state
@@ -10,7 +10,7 @@ export class MainController {
       guess: ''
     }
 
-    this.setUpLevel(1)
+    this.setUpLevel($stateParams.level)
 
     $scope.$watch(
       () => this.input.guess,
@@ -70,12 +70,12 @@ export class MainController {
     if(!this.isCorrectSolution(this.input.guess)) return;
 
     if (this.level.next) {
-      this.setUpLevel(this.level.next)
+      this.$state.go('home',{level:this.level.next})
     } else {
       this.$state.go('gameEnded')
     }
   }
-  
+
   getLevel(level) {
     return this.GameLevelsService
                .getLevel(level)

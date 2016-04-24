@@ -2,10 +2,15 @@ export function routerConfig ($stateProvider, $urlRouterProvider) {
   'ngInject'
   $stateProvider
     .state('home', {
-      url: '/',
+      url: '/{level:[0-9]{1,2}}',
       templateUrl: 'app/main/main.html',
       controller: 'MainController',
-      controllerAs: 'main'
+      controllerAs: 'main',
+      params: {
+        level: {
+          value:'1'
+        }
+      }
     })
     .state('gameEnded', {
       url: '/game-ended',
