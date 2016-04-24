@@ -23,7 +23,6 @@ export class GameLevelsService {
   }
 
   getLevelStatic(level) {
-    console.log("level", level)
     const LEVELS=  [{
         name: 'level1',
         correctSolution: 'sand',

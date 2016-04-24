@@ -22,10 +22,11 @@ class SolutionAreaController {
     'ngInject'
 
     this.$scope = $scope
-    this.parseLetters() 
+    this.parseLetters()
+    
   }
 
-  parseLetters (letters) {
+  parseLetters () {
     this.parsedLetters = this.letters.split('').map(char => ({char, used:false}))
   }
 

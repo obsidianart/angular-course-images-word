@@ -39,7 +39,6 @@ export class MainController {
   }
 
   restartLevel() {
-    console.log("here")
     this.setUpLevel(this.$stateParams.level)
   }
 
