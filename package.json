@@ -1,7 +1,10 @@
 {
   "name": "angularCourseImagesWord",
   "version": "0.0.0",
-  "dependencies": {},
+  "dependencies": {
+    "body-parser": "^1.15.0",
+    "express": "^4.13.4"
+  },
   "scripts": {
     "test": "gulp test"
   },

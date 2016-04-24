@@ -4,16 +4,16 @@
   </div>
   <section id="guessPictures" class="row">
     <div class="col-xs-6 text-center">
-      <img id="picture1" class="img-responsive" width="200" ng-src="assets/images/level{{main.currentLevel}}/1.jpg">
+      <img id="picture1" class="img-responsive" width="200" ng-src="assets/images/{{main.level.name}}/1.jpg">
     </div>
     <div class="col-xs-6 text-center">
-      <img id="picture2" class="img-responsive" width="200" ng-src="assets/images/level{{main.currentLevel}}/2.jpg">
+      <img id="picture2" class="img-responsive" width="200" ng-src="assets/images/{{main.level.name}}/2.jpg">
     </div>
     <div class="col-xs-6 text-center">
-      <img id="picture3" class="img-responsive" width="200" ng-src="assets/images/level{{main.currentLevel}}/3.jpg">
+      <img id="picture3" class="img-responsive" width="200" ng-src="assets/images/{{main.level.name}}/3.jpg">
     </div>
     <div class="col-xs-6 text-center">
-      <img id="picture4" class="img-responsive" width="200" ng-src="assets/images/level{{main.currentLevel}}/4.jpg">
+      <img id="picture4" class="img-responsive" width="200" ng-src="assets/images/{{main.level.name}}/4.jpg">
     </div>
   </section>
   <div class="row" ng-show="main.isCorrectGuess">
@@ -30,7 +30,7 @@
         {{letter}}
       </span>
       <span
-        ng-click="main.restartLevel()"
+        ng-click="main.startLevel()"
         class="letterButton btn btn-raised btn-default">
         <span class="glyphicon glyphicon-repeat"></span>
       </span>

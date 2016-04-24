@@ -1,13 +1,16 @@
 export class MainController {
-  constructor ($scope, $state, toastr) {
+  constructor ($scope, $state, $http, GameLevels, toastr) {
     'ngInject';
     this.toastr = toastr
     this.$state = $state
-    this.currentLevel = 1
+    this.GameLevelsService = GameLevels
+
+    this.level = {}
     this.input = {
       guess: ''
     }
-    this.startLevel()
+
+    this.setUpLevel(1)
 
     $scope.$watch(
       () => this.input.guess,
@@ -31,72 +34,54 @@ export class MainController {
   }
 
   rigthPadSpacesGuess() {
+    if (!this.correctSolution) return ''
+
     let paddedGuess = this.input.guess
     while(paddedGuess.length < this.correctSolution.length)
       paddedGuess += '\u00A0'
     return paddedGuess
   }
 
-  //Reset variables to start a new level
-  startLevel() {
-    this.input.guess = ''
-    this.isCorrectGuess = false
-    this.startTime = Date.now()
-    this.letters = this.getCurrentLevel()
-                       .letters
-                       .split('')
-                       .map(char => {
-                          return {char, used:false}
-                        })
-    this.correctSolution = this.getCurrentLevel().correctSolution
-  }
-
-  restartLevel(){
-    return this.startLevel()
+  setUpLevel(level) {
+    this.getLevel(level).then(()=>{
+      this.input.guess = ''
+      this.isCorrectGuess = false
+      this.startTime = Date.now()
+      this.letters = this.level
+                         .letters
+                         .split('')
+                         .map(char => ({char, used:false}))
+      this.correctSolution = this.level.correctSolution
+    })
   }
 
   //Set the variable for the end of one level (winning screen etc)
   passLevel(){
+    this.isCorrectGuess = true
+
     const MS_IN_1_SECONDS = 1000
     let elapsed = Date.now() - this.startTime
     let toSeconds = ms => (ms/MS_IN_1_SECONDS).toFixed(1)
 
-    this.toastr.info("You passed level 1 in " + toSeconds(elapsed) + "s")
-    this.isCorrectGuess = true
+    this.toastr.info(`You passed level ${this.level.name} in ${toSeconds(elapsed)} seconds`)
   }
 
   nextLevel() {
     if(!this.isCorrectSolution(this.input.guess)) return;
-    
-    this.currentLevel++
-    if (this.getCurrentLevel()) {
-      this.startLevel()
+
+    if (this.level.next) {
+      this.setUpLevel(this.level.next)
     } else {
-      this.endGame()
+      this.$state.go('gameEnded')
     }
   }
-
-  endGame() {
-    this.$state.go('gameEnded')
-  }
-
-  getCurrentLevel() {
-    const levels = {
-      level1: {
-        correctSolution: 'sand',
-        letters: 'esdawrnrgdop'
-      },
-      level2: {
-        correctSolution: 'fire',
-        letters: 'nmqefdwrnrig'
-      }
-    }
-    let newLevel = `level${this.currentLevel}`
-    if (newLevel in levels) {
-      return levels[newLevel]
-    } else {
-      return false
-    }
+  
+  getLevel(level) {
+    return this.GameLevelsService
+               .getLevel(level)
+               .then((level)=>{
+                 this.level = level
+               })
   }
 
 }
