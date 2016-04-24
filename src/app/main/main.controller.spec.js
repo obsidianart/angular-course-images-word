@@ -6,20 +6,31 @@ describe('Main Game controller', () => {
 
   beforeEach(angular.mock.module('angularCourseImagesWord'))
 
-  beforeEach(inject(($controller, $rootScope, toastr) => {
+  beforeEach(inject(($controller, $rootScope, $state, toastr, GameLevels, $q) => {
     //spyOn(webDevTec, 'getTec').and.returnValue([{}, {}, {}, {}, {}])
     spyOn(toastr, 'info').and.callThrough()
+    spyOn($state, 'go').and.callThrough()
     spyOn(Date, "now").and.returnValue(START_TIME);
+    spyOn(GameLevels, "getLevel").and.callFake(function(){
+      return $q.when({
+        name: 'level1',
+        correctSolution: 'sand',
+        letters: 'esdawrnrgdop',
+        next:2
+      })
+    })
 
     $scope = $rootScope.$new()
 
     vm = $controller('MainController',{
       $scope: $scope
     })
+
+    $scope.$digest() //This digest allow the first promise call (the one which gets the level) to be resolved
   }))
 
   it('should start at level 1', () => {
-    expect(vm.currentLevel).toEqual(1)
+    expect(vm.level.name).toEqual('level1')
   })
 
   it('should start the timer', () => {
@@ -46,9 +57,10 @@ describe('Main Game controller', () => {
         vm.nextLevel()
       })
 
-      it('should go to the next level', () => {
-        expect(vm.currentLevel).toEqual(2)
-      })
+      it('should go to the next level', inject(($state) => {
+        expect($state.go).toHaveBeenCalledWith('home', {level:2})
+        
+      }))
     })
 
     

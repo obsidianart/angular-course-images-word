@@ -8,7 +8,6 @@ export class GameLevelsService {
   }
 
   getLevel(level=1) {
-    console.log("getting level")
     return this
       .$http
       .get(`${this.apiHost }/${level}`)
@@ -16,7 +15,7 @@ export class GameLevelsService {
         return response.data
       })
       .catch(response => {
-        this.$log.error('XHR Failed for Levels.')
+        this.$log.error('XHR Failed for Levels. ', response)
       })
   }
 }

@@ -80,6 +80,7 @@ export class MainController {
     return this.GameLevelsService
                .getLevel(level)
                .then((level)=>{
+                
                  this.level = level
                })
   }

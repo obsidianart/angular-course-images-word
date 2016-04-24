@@ -31,3 +31,4 @@ Step20: Adding buttons for the solution (ng-repeat)
 Step21: Fix tests
 Step22: get Levels from the serve
 Step23: Adding level to the url
+Step24: Updating tests
