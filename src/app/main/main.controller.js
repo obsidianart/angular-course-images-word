@@ -3,6 +3,7 @@ export class MainController {
     'ngInject';
     this.toastr = toastr
     this.$state = $state
+    this.$stateParams = $stateParams
     this.GameLevelsService = GameLevels
 
     this.level = {}
@@ -10,7 +11,7 @@ export class MainController {
       guess: ''
     }
 
-    this.setUpLevel($stateParams.level)
+    this.restartLevel()
 
     $scope.$watch(
       () => this.input.guess,
@@ -55,6 +56,10 @@ export class MainController {
     })
   }
 
+  restartLevel() {
+    this.setUpLevel(this.$stateParams.level)
+  }
+
   //Set the variable for the end of one level (winning screen etc)
   passLevel(){
     this.isCorrectGuess = true
@@ -80,7 +85,7 @@ export class MainController {
     return this.GameLevelsService
                .getLevel(level)
                .then((level)=>{
-                
+
                  this.level = level
                })
   }
