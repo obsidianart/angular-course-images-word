@@ -29,6 +29,7 @@ export class MainController {
   }
 
   setUpLevel(level) {
+    var that = this
     this.getLevel(level).then(()=>{
       this.input.guess = ''
       this.isCorrectGuess = false
@@ -38,6 +39,7 @@ export class MainController {
   }
 
   restartLevel() {
+    console.log("here")
     this.setUpLevel(this.$stateParams.level)
   }
 
@@ -67,7 +69,6 @@ export class MainController {
     return this.GameLevelsService
                .getLevel(level)
                .then((level)=>{
-
                  this.level = level
                })
   }

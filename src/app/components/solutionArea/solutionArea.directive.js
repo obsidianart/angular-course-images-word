@@ -21,10 +21,12 @@ class SolutionAreaController {
   constructor ($scope) {
     'ngInject'
 
-    let mapLetters = (letters) => letters.split('').map(char => ({char, used:false}))
-
-    this.letters = mapLetters(this.letters)
     this.$scope = $scope
+    this.parseLetters() 
+  }
+
+  parseLetters (letters) {
+    this.parsedLetters = this.letters.split('').map(char => ({char, used:false}))
   }
 
   rigthPadSpacesGuess() {
@@ -45,6 +47,7 @@ class SolutionAreaController {
   }
 
   restartLevel(){
+    this.parseLetters()
     this.$scope.$emit('restart')
   }
 }

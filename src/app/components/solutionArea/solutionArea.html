@@ -14,7 +14,7 @@
 
 <div id="guess-block" class="text-center">
   <span
-    ng-repeat="letter in vm.letters track by $index"
+    ng-repeat="letter in vm.parsedLetters track by $index"
     ng-click="vm.insertLetter(letter)"
     class="letterButton btn btn-raised btn-info"
     ng-attr-data-letter="{{letter.used ? '':letter.char}}"
