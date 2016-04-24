@@ -21,32 +21,10 @@
       <button class="bnt btn-primary btn-lg" ng-click="main.nextLevel()">Correct! Go to the next level</button>
     </div>
   </div>
-  <section ng-show="!main.isCorrectGuess">
-    <div class="row text-center">
-      <span
-        ng-repeat="letter in main.rigthPadSpacesGuess(main.input.guess) track by $index"
-        class="letterButton btn btn-default"
-      >
-        {{letter}}
-      </span>
-      <span
-        ng-click="main.restartLevel()"
-        class="letterButton btn btn-raised btn-default">
-        <span class="glyphicon glyphicon-repeat"></span>
-      </span>
-    </div>
-
-    <div id="guess-block" class="text-center" ng-show="!main.isCorrectGuess">
-      <span
-        ng-repeat="letter in main.letters track by $index"
-        ng-click="main.insertLetter(letter)"
-        class="letterButton btn btn-raised btn-info"
-        ng-attr-data-letter="{{letter.used ? '':letter.char}}"
-      >
-        <span>
-          {{letter.used ? '&nbsp;':letter.char}}
-        </span>
-      </span>
-    </div>
-  </section>
+  <solution-area
+    ng-if="!!main.level && !main.isCorrectGuess "
+    solution="main.level.correctSolution"
+    letters='main.level.letters'
+    guess='main.input.guess'
+  />
 </main>

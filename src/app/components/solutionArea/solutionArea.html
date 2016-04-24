@@ -1,0 +1,26 @@
+<div class="row text-center">
+  <span
+    ng-repeat="letter in vm.rigthPadSpacesGuess(vm.input.guess) track by $index"
+    class="letterButton btn btn-default"
+  >
+    {{letter}}
+  </span>
+  <span
+    ng-click="vm.restartLevel()"
+    class="letterButton btn btn-raised btn-default">
+    <span class="glyphicon glyphicon-repeat"></span>
+  </span>
+</div>
+
+<div id="guess-block" class="text-center">
+  <span
+    ng-repeat="letter in vm.letters track by $index"
+    ng-click="vm.insertLetter(letter)"
+    class="letterButton btn btn-raised btn-info"
+    ng-attr-data-letter="{{letter.used ? '':letter.char}}"
+  >
+    <span>
+      {{letter.used ? '&nbsp;':letter.char}}
+    </span>
+  </span>
+</div>

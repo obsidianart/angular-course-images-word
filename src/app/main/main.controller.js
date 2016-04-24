@@ -13,6 +13,8 @@ export class MainController {
 
     this.restartLevel()
 
+    $scope.$on('restart', this.restartLevel.bind(this))
+
     $scope.$watch(
       () => this.input.guess,
       guess => {
@@ -26,32 +28,11 @@ export class MainController {
     return guess == this.correctSolution
   }
 
-  insertLetter(letter) {
-    if (letter.used) return;
-    if (this.input.guess.length >= this.correctSolution.length) return;
-
-    letter.used = true
-    this.input.guess += letter.char
-  }
-
-  rigthPadSpacesGuess() {
-    if (!this.correctSolution) return ''
-
-    let paddedGuess = this.input.guess
-    while(paddedGuess.length < this.correctSolution.length)
-      paddedGuess += '\u00A0'
-    return paddedGuess
-  }
-
   setUpLevel(level) {
     this.getLevel(level).then(()=>{
       this.input.guess = ''
       this.isCorrectGuess = false
       this.startTime = Date.now()
-      this.letters = this.level
-                         .letters
-                         .split('')
-                         .map(char => ({char, used:false}))
       this.correctSolution = this.level.correctSolution
     })
   }
@@ -82,6 +63,7 @@ export class MainController {
   }
 
   getLevel(level) {
+    this.level = null
     return this.GameLevelsService
                .getLevel(level)
                .then((level)=>{
