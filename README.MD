@@ -45,3 +45,4 @@ Steps
 - Step22: get Levels from the serve
 - Step23: Adding level to the url
 - Step24: Updating tests
+- Step25: Adding animation

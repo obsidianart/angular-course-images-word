@@ -52,8 +52,27 @@ $lettersPerLine: 6;
 	}
 }
 
+@keyframes appear_animation {
+	0% { transform: scale(0); }
+	100% { transform: scale(1); }
+}
+
 .letterButton {
 	width: $letterWidth;
+	&.ng-enter {
+		transform: scale(0);
+		animation-name: appear_animation;
+		animation-duration: 0.6s;
+		transform-origin:50% 50%;
+		animation-iteration-count: 1;
+		animation-timing-function: easeInQuart;
+
+		@for $i from 1 through 12 {
+			&:nth-child(#{$i}) {
+				animation-delay: $i *0.05s; 
+			}
+		}
+	}
 }
 
 #guess-block {
