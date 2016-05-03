@@ -29,7 +29,6 @@ export class MainController {
   }
 
   setUpLevel(level) {
-    var that = this
     this.getLevel(level).then(()=>{
       this.input.guess = ''
       this.isCorrectGuess = false
